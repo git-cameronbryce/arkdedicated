@@ -7,13 +7,15 @@ export const getEvolvedMatch = async (name: string): Promise<Response[]> => {
     const response = await fetch(url);
     const data: Wiki[] = await response.json();
 
-    return data
+    const servers = data
       .filter((s) => s.Name.toLowerCase().includes(name))
       .map((s) => ({
         name: s.Name,
         players: s.NumPlayers,
         maxPlayers: s.MaxPlayers,
       }));
+
+    return servers.sort((a, b) => b.players - a.players).slice(0, 10);
   } catch (error) {
     return [];
   }

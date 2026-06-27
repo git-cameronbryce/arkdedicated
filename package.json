@@ -1,7 +1,7 @@
 {
   "name": "script",
   "scripts": {
-    "start": "bun run src/index.ts",
+    "start": "bun --smol run src/index.ts",
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {

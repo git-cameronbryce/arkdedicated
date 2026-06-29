@@ -5,6 +5,7 @@ export const getAscendedMatch = async (name: string): Promise<Response[]> => {
     const params = new URLSearchParams({
       "filter[game]": "arksa",
       "filter[search]": name.split(" ")[0],
+      "page[size]": "25",
     });
 
     const url = `https://api.battlemetrics.com/servers?${params}`;
@@ -20,7 +21,7 @@ export const getAscendedMatch = async (name: string): Promise<Response[]> => {
         maxPlayers: s.attributes.maxPlayers,
       }));
 
-    return servers.sort((a, b) => b.players - a.players).slice(0, 10);
+    return servers.sort((a, b) => b.players - a.players).slice(0, 25);
   } catch (error) {
     return [];
   }

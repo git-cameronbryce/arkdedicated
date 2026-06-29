@@ -15,7 +15,7 @@ export const getEvolvedMatch = async (name: string): Promise<Response[]> => {
         maxPlayers: s.MaxPlayers,
       }));
 
-    return servers.sort((a, b) => b.players - a.players).slice(0, 25);
+    return servers.sort((a, b) => b.players - a.players).slice(0, 50);
   } catch (error) {
     return [];
   }
